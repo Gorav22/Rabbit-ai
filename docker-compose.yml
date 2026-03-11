@@ -1,11 +1,10 @@
-version: '3.9'
 
 services:
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: rabbitai-backend:latest
+    image: gorav22/rabbitai-backend:latest
     container_name: rabbitai_backend
     restart: unless-stopped
     ports:
@@ -30,7 +29,7 @@ services:
       dockerfile: Dockerfile
       args:
         - VITE_API_URL=http://localhost:8000
-    image: rabbitai-frontend:latest
+    image: gorav22/rabbitai-frontend:latest
     container_name: rabbitai_frontend
     restart: unless-stopped
     ports:
