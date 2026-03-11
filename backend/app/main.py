@@ -280,5 +280,4 @@ async def custom_redoc():
 @app.get("/api-docs", include_in_schema=False)
 async def api_docs_redirect():
     """Friendly redirect — /api-docs goes to the Swagger UI."""
-    from fastapi.responses import RedirectResponse
     return RedirectResponse(url="/docs")
