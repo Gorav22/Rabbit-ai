@@ -28,11 +28,73 @@ limiter = Limiter(key_func=get_remote_address)
         "**Supported formats:** `.csv`, `.xlsx`, `.xls`."
     ),
     responses={
-        200: {"description": "Analysis complete; email sent."},
-        400: {"description": "Invalid file type or malformed input."},
-        422: {"description": "Validation error (e.g., invalid email)."},
-        429: {"description": "Rate limit exceeded."},
-        500: {"description": "Internal server error (AI or mailer failure)."},
+        200: {
+            "description": "Analysis complete — AI summary generated and email delivered.",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "status": "success",
+                        "message": "Analysis complete. Summary sent to exec@company.com.",
+                        "recipient": "exec@company.com",
+                        "summary_preview": (
+                            "## Q1 2026 Sales Executive Summary\n\n"
+                            "**Total Revenue:** $684,000 across 6 transactions.\n\n"
+                            "**Top Category:** Electronics dominated with ~97% of revenue ($639,750). "
+                            "**Top Region:** North led with $442,500 in combined sales. "
+                            "**Concern:** 1 cancelled order (Home Appliances, North — $24,000) requires follow-up…"
+                        ),
+                        "rows_processed": 6,
+                        "columns_detected": [
+                            "Date", "Product_Category", "Region",
+                            "Units_Sold", "Unit_Price", "Revenue", "Status"
+                        ],
+                    }
+                }
+            },
+        },
+        400: {
+            "description": "Invalid file type (not CSV/XLSX/XLS).",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "detail": "Unsupported file type '.pdf'. Allowed: .csv, .xlsx, .xls"
+                    }
+                }
+            },
+        },
+        422: {
+            "description": "Validation error — invalid email address or missing field.",
+            "content": {
+                "application/json": {
+                    "example": {"detail": "Invalid email address provided."}
+                }
+            },
+        },
+        429: {
+            "description": "Rate limit exceeded — 10 requests/min per IP.",
+            "content": {
+                "application/json": {
+                    "example": {"error": "Rate limit exceeded: 10 per 1 minute"}
+                }
+            },
+        },
+        500: {
+            "description": "AI generation or email delivery failure.",
+            "content": {
+                "application/json": {
+                    "examples": {
+                        "ai_failure": {
+                            "summary": "Groq API failure",
+                            "value": {"detail": "AI summary generation failed: Connection timeout"}
+                        },
+                        "email_failure": {
+                            "summary": "SMTP failure",
+                            "value": {"detail": "Email delivery failed: Authentication error"}
+                        },
+                    }
+                }
+            },
+        },
     },
 )
 @limiter.limit("10/minute")

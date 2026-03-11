@@ -17,8 +17,8 @@ A single-page application where sales team members upload a `.csv` or `.xlsx` fi
 ### 1. Clone & configure
 
 ```bash
-git clone https://github.com/your-org/rabbitai.git
-cd rabbitai
+git clone https://github.com/Gorav22/Rabbit-ai.git
+cd Rabbit-ai
 
 # Copy and fill in backend environment variables
 cp backend/.env.example backend/.env
