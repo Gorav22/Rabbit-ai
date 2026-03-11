@@ -159,4 +159,4 @@ Full interactive docs at `/docs` (Swagger UI) and `/redoc`.
 
 ---
 
-*Built with ❤️ by the Rabbitt AI Engineering team.*
+*Built with ❤️ by the future team person of Rabbitt AI.*
