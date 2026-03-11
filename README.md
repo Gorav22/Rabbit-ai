@@ -126,22 +126,27 @@ frontend-lint ──►  frontend-build
 
 ## 🌐 Deployment
 
+Both the frontend and backend are optimized for deployment on **Vercel**.
+
 | Component | Platform | Notes |
 |---|---|---|
-| **Frontend** | Vercel / Netlify | Static SPA deploy from `frontend/dist` |
-| **Backend** | Render | Docker container, set env vars in dashboard |
+| **Frontend** | Vercel | Static SPA deploy from `frontend/dist` |
+| **Backend** | Vercel | Serverless Functions (FastAPI) |
 
-### Render (Backend)
-1. Create new **Web Service** → connect repo
-2. Set **Root Directory**: `backend`
-3. Set **Docker** as runtime
-4. Add all env vars from `.env.example` in Render dashboard
+### Vercel Deployment
 
-### Vercel (Frontend)
-1. Connect repo, set **Root Directory**: `frontend`
-2. Set **Build Command**: `npm run build`
-3. Set **Output Directory**: `dist`
-4. Add env var: `VITE_API_URL=https://your-backend.onrender.com`
+1. **Backend**:
+   - Connect repository to Vercel.
+   - Set **Root Directory** to `backend`.
+   - Vercel automatically detects FastAPI if configured with `vercel.json` or as serverless functions.
+   - Add all environment variables from `.env.example` in the Vercel project settings.
+
+2. **Frontend**:
+   - Connect repository to Vercel.
+   - Set **Root Directory** to `frontend`.
+   - Set **Build Command**: `npm run build`.
+   - Set **Output Directory**: `dist`.
+   - Add env var: `VITE_API_URL=https://your-backend-on-vercel.vercel.app`.
 
 ---
 
