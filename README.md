@@ -3,11 +3,26 @@
 > **Engineer's Log** · AI Cloud DevOps Sprint  
 > Stack: FastAPI · Groq (Llama 3) · React/Vite · Docker · GitHub Actions
 
+[![Backend Image](https://img.shields.io/docker/v/gorav22/rabbitai-backend?label=gorav22%2Frabbitai-backend&logo=docker&color=7c3aed)](https://hub.docker.com/r/gorav22/rabbitai-backend)
+[![Frontend Image](https://img.shields.io/docker/v/gorav22/rabbitai-frontend?label=gorav22%2Frabbitai-frontend&logo=docker&color=4f46e5)](https://hub.docker.com/r/gorav22/rabbitai-frontend)
+
 A single-page application where sales team members upload a `.csv` or `.xlsx` file and instantly receive an AI-generated executive summary in their inbox — powered by **Groq (Llama 3.3-70b)**.
 
 ---
 
-## 🚀 Quick Start with Docker Compose
+## � Docker Hub Images
+
+| Image | Docker Hub | Pull Command |
+|---|---|---|
+| **Backend** | [gorav22/rabbitai-backend](https://hub.docker.com/r/gorav22/rabbitai-backend) | `docker pull gorav22/rabbitai-backend:latest` |
+| **Frontend** | [gorav22/rabbitai-frontend](https://hub.docker.com/r/gorav22/rabbitai-frontend) | `docker pull gorav22/rabbitai-frontend:latest` |
+
+Run the full stack from Docker Hub (no source code needed):
+```bash
+docker compose pull && docker compose up
+```
+
+## �🚀 Quick Start with Docker Compose
 
 ### Prerequisites
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
