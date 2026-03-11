@@ -1,4 +1,5 @@
 import io
+import os
 import pandas as pd
 from typing import Any
 
@@ -13,9 +14,7 @@ def validate_file(filename: str, content: bytes) -> None:
         raise ValueError(f"Unsupported file type '{ext}'. Allowed: {', '.join(ALLOWED_EXTENSIONS)}")
 
 
-
 def _get_extension(filename: str) -> str:
-    import os
     return os.path.splitext(filename.lower())[1]
 
 

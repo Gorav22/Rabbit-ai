@@ -1,7 +1,6 @@
 import logging
 from fastapi import APIRouter, UploadFile, File, Form, Request, HTTPException
-from fastapi.responses import JSONResponse
-from pydantic import EmailStr, ValidationError
+from pydantic import EmailStr
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
