@@ -1,0 +1,10 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+pydantic[email]==2.11.2
+pandas==2.2.3
+openpyxl==3.1.5
+groq==0.15.0
+slowapi==0.1.9
+python-dotenv==1.0.1
+email-validator==2.2.0
